@@ -1366,8 +1366,7 @@
     addMeters();
     renderPlanOptions();
     loadState();
-    ensureDefaultAcs();
-    loadBundledPlansIfEmpty();
+    loadBundledPlansIfEmpty().finally(ensureDefaultAcs);
   </script>
 </body>
 </html>
