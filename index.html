@@ -1,0 +1,1373 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Micas Japan 空白网格平面图</title>
+  <style>
+    :root {
+      --ink: #18202a;
+      --muted: #657080;
+      --line: #d5dbe3;
+      --paper: #f7f8fa;
+      --wall: #1f252d;
+      --grid: rgba(24, 32, 42, 0.08);
+      --wall-draft: #242a33;
+      --door-draft: #1f7a8c;
+      --logo-blue: #25aee4;
+      --fixed: #e4e8ee;
+      --text-note: rgba(255, 255, 255, 0.86);
+      --white: #fff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+    }
+
+    header {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 22px 28px 16px;
+      border-bottom: 1px solid var(--line);
+      background: var(--white);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 24px;
+      line-height: 1.25;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .toolbar {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .tool-group {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #f8fafc;
+    }
+
+    .tool-label {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 0 4px;
+      white-space: nowrap;
+    }
+
+    button,
+    select {
+      min-height: 36px;
+      border: 1px solid #c8d0db;
+      border-radius: 6px;
+      background: #ffffff;
+      color: var(--ink);
+      font-size: 13px;
+      padding: 0 12px;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #eef2f6;
+    }
+
+    .save-status {
+      min-height: 36px;
+      display: inline-flex;
+      align-items: center;
+      color: var(--muted);
+      font-size: 12px;
+      padding: 0 4px;
+      white-space: nowrap;
+    }
+
+    main {
+      padding: 18px;
+    }
+
+    .shell {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .head {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--line);
+      background: #fbfcfd;
+    }
+
+    .title {
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .hint {
+      color: var(--muted);
+      font-size: 12px;
+      text-align: right;
+    }
+
+    .canvas-wrap {
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+      padding: 28px 28px 44px;
+      overflow: auto;
+    }
+
+    .floor {
+      position: relative;
+      width: 880px;
+      height: 360px;
+      background:
+        linear-gradient(90deg, var(--grid) 1px, transparent 1px),
+        linear-gradient(0deg, var(--grid) 1px, transparent 1px),
+        #fff;
+      background-size: 50px 50px;
+      border: 8px solid var(--wall);
+      border-radius: 3px;
+      box-shadow: 0 14px 32px rgba(29, 37, 48, 0.08);
+    }
+
+    .floor::before {
+      content: "17.6m";
+      position: absolute;
+      left: 50%;
+      bottom: -34px;
+      transform: translateX(-50%);
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .floor::after {
+      content: "7.2m";
+      position: absolute;
+      right: -42px;
+      top: 50%;
+      transform: translateY(-50%) rotate(90deg);
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .meter-x,
+    .meter-y {
+      position: absolute;
+      color: #8a95a3;
+      font-size: 10px;
+      pointer-events: none;
+    }
+
+    .meter-x {
+      top: -24px;
+      transform: translateX(-50%);
+    }
+
+    .meter-y {
+      left: -24px;
+      transform: translateY(-50%);
+    }
+
+    .wall-line {
+      position: absolute;
+      left: 70px;
+      top: 70px;
+      width: 180px;
+      height: 8px;
+      transform-origin: 0 50%;
+      background: var(--wall-draft);
+      border-radius: 999px;
+      cursor: move;
+      box-shadow: 0 4px 10px rgba(24, 32, 42, 0.18);
+      touch-action: none;
+      z-index: 4;
+    }
+
+    .wall-line::before {
+      content: "";
+      position: absolute;
+      left: -5px;
+      top: 50%;
+      width: 12px;
+      height: 12px;
+      transform: translateY(-50%);
+      border-radius: 50%;
+      background: #fff;
+      border: 2px solid var(--wall-draft);
+    }
+
+    .wall-handle {
+      position: absolute;
+      right: -8px;
+      top: 50%;
+      width: 18px;
+      height: 18px;
+      transform: translateY(-50%);
+      border-radius: 50%;
+      background: #fff;
+      border: 3px solid var(--wall-draft);
+      cursor: ew-resize;
+    }
+
+    .length-label {
+      position: absolute;
+      left: 50%;
+      top: -18px;
+      transform: translateX(-50%);
+      color: #8a95a3;
+      font-size: 10px;
+      font-weight: 400;
+      white-space: nowrap;
+      pointer-events: none;
+    }
+
+    .wall-line.selected,
+    .text-box.selected {
+      outline: 3px solid rgba(66, 133, 244, 0.24);
+      outline-offset: 7px;
+    }
+
+    .door-line {
+      height: 5px;
+      background: var(--door-draft);
+      box-shadow: 0 4px 10px rgba(31, 122, 140, 0.18);
+    }
+
+    .door-line::before {
+      border-color: var(--door-draft);
+    }
+
+    .door-line .wall-handle {
+      border-color: var(--door-draft);
+    }
+
+    .door-line::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 42px;
+      height: 42px;
+      border: 2px dashed rgba(31, 122, 140, 0.72);
+      border-left: 0;
+      border-bottom: 0;
+      border-radius: 0 42px 0 0;
+      transform-origin: 0 100%;
+      pointer-events: none;
+    }
+
+    .door-line.swing-down::after {
+      top: 0;
+      bottom: auto;
+      border-top: 0;
+      border-bottom: 2px dashed rgba(31, 122, 140, 0.72);
+      border-radius: 0 0 42px 0;
+      transform-origin: 0 0;
+    }
+
+    .measure-line {
+      height: 0;
+      background: transparent;
+      border-top: 2px dashed #8a95a3;
+      box-shadow: none;
+    }
+
+    .measure-line::before {
+      width: 8px;
+      height: 8px;
+      left: -4px;
+      border-color: #8a95a3;
+    }
+
+    .measure-line .wall-handle {
+      width: 14px;
+      height: 14px;
+      right: -7px;
+      border-color: #8a95a3;
+    }
+
+    .logo-wall-line {
+      height: 8px;
+      background: var(--logo-blue);
+      box-shadow: 0 4px 12px rgba(37, 174, 228, 0.28);
+    }
+
+    .logo-wall-line::before {
+      border-color: var(--logo-blue);
+    }
+
+    .logo-wall-line .wall-handle {
+      border-color: var(--logo-blue);
+    }
+
+    .logo-wall-line .length-label {
+      color: var(--logo-blue);
+      font-weight: 700;
+    }
+
+    .text-box {
+      position: absolute;
+      left: 70px;
+      top: 130px;
+      min-width: 110px;
+      min-height: 34px;
+      max-width: none;
+      padding: 7px 9px;
+      color: var(--ink);
+      font-size: 13px;
+      line-height: 1.35;
+      background: var(--text-note);
+      border: 1px solid #b9c2cf;
+      border-radius: 6px;
+      cursor: move;
+      box-shadow: 0 6px 14px rgba(24, 32, 42, 0.10);
+      touch-action: none;
+      z-index: 5;
+      resize: both;
+      overflow: auto;
+    }
+
+    .text-content {
+      min-width: 80px;
+      min-height: 20px;
+      padding-right: 8px;
+    }
+
+    .text-resize-handle {
+      position: absolute;
+      right: 3px;
+      bottom: 3px;
+      width: 12px;
+      height: 12px;
+      border-right: 2px solid #8a95a3;
+      border-bottom: 2px solid #8a95a3;
+      cursor: nwse-resize;
+    }
+
+    .fixed-core {
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 220px;
+      height: 360px;
+      border-left: 6px solid var(--wall);
+      background: rgba(228, 232, 238, 0.82);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .fixed-cell {
+      position: absolute;
+      display: grid;
+      place-items: center;
+      border: 2px solid #aeb7c3;
+      background: var(--fixed);
+      color: #525d6b;
+      font-size: 12px;
+      font-weight: 700;
+      text-align: center;
+      padding: 4px;
+    }
+
+    .fixed-eps { left: 10px; top: 8px; width: 68px; height: 24px; }
+    .fixed-fs { left: 84px; top: 8px; width: 58px; height: 24px; }
+    .fixed-ev { right: 16px; top: 116px; width: 76px; height: 74px; }
+    .fixed-wc1 { left: 18px; top: 242px; width: 52px; height: 88px; }
+    .fixed-wc2 { left: 78px; top: 242px; width: 56px; height: 88px; }
+    .fixed-ps { right: 14px; top: 292px; width: 50px; height: 34px; }
+    .fixed-balcony {
+      right: 14px;
+      top: 194px;
+      width: 34px;
+      height: 84px;
+      writing-mode: vertical-rl;
+    }
+    .fixed-sink { left: 10px; top: 168px; width: 76px; height: 48px; }
+    .fixed-hall { left: 10px; top: 98px; width: 86px; height: 64px; }
+
+    .fixed-stair {
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 128px;
+      height: 82px;
+      border: 4px solid #9fa8b5;
+      background: repeating-linear-gradient(90deg, #eef1f5 0 15px, #cfd6df 15px 18px);
+      color: #55606f;
+      font-size: 12px;
+      font-weight: 700;
+      display: grid;
+      place-items: center;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .fixed-entry-door {
+      position: absolute;
+      right: 198px;
+      top: 96px;
+      width: 46px;
+      height: 46px;
+      border: 3px solid #6d7684;
+      border-left: 0;
+      border-bottom: 0;
+      border-radius: 0 46px 0 0;
+      transform: rotate(90deg);
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .reference-dot {
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      background: #05070a;
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    .dot-t1 { left: -8px; top: -8px; }
+    .dot-t2 { left: 248px; top: -8px; }
+    .dot-t3 { left: 478px; top: -8px; }
+    .dot-t4 { left: 652px; top: -8px; }
+    .dot-t5 { right: -8px; top: -8px; }
+    .dot-b1 { left: -8px; bottom: -8px; }
+    .dot-b2 { left: 248px; bottom: -8px; }
+    .dot-b3 { left: 478px; bottom: -8px; }
+    .dot-b4 { left: 652px; bottom: -8px; }
+    .dot-b5 { right: -8px; bottom: -8px; }
+
+    .fixed-ac {
+      position: absolute;
+      width: 45px;
+      height: 45px;
+      display: grid;
+      place-items: center;
+      border: 2px dashed #c88a2b;
+      border-radius: 6px;
+      background: rgba(255, 245, 224, 0.86);
+      color: #8a95a3;
+      font-size: 9px;
+      line-height: 1.15;
+      text-align: center;
+      z-index: 2;
+      cursor: move;
+      touch-action: none;
+    }
+
+    .fixed-ac.selected {
+      outline: 3px solid rgba(66, 133, 244, 0.24);
+      outline-offset: 5px;
+    }
+
+    .furniture {
+      position: absolute;
+      display: grid;
+      place-items: center;
+      border: 2px solid #7f8fa3;
+      border-radius: 6px;
+      background: rgba(239, 244, 249, 0.92);
+      color: #506071;
+      font-size: 10px;
+      line-height: 1.2;
+      text-align: center;
+      cursor: move;
+      touch-action: none;
+      z-index: 3;
+      box-shadow: 0 4px 10px rgba(24, 32, 42, 0.08);
+      transform-origin: 50% 50%;
+    }
+
+    .furniture.selected {
+      outline: 3px solid rgba(66, 133, 244, 0.24);
+      outline-offset: 5px;
+    }
+
+    .furniture-desk-2 {
+      width: 84px;
+      height: 96px;
+      border: 0;
+      background: transparent;
+      box-shadow: none;
+      overflow: visible;
+    }
+
+    .furniture-desk-4 {
+      width: 144px;
+      height: 96px;
+      border: 0;
+      background: transparent;
+      box-shadow: none;
+      overflow: visible;
+    }
+
+    .furniture-meeting-table {
+      width: 190px;
+      height: 86px;
+      border: 0;
+      background: transparent;
+      box-shadow: none;
+      overflow: visible;
+    }
+
+    .meeting-table-core {
+      position: absolute;
+      left: 15px;
+      top: 24px;
+      width: 160px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border: 2px solid #7f8fa3;
+      border-radius: 5px;
+      background: rgba(232, 242, 255, 0.96);
+      color: #506071;
+      font-size: 10px;
+    }
+
+    .desk-core {
+      position: absolute;
+      top: 29px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border: 2px solid #7f8fa3;
+      border-radius: 5px;
+      background: rgba(239, 244, 249, 0.96);
+      color: #506071;
+      font-size: 10px;
+    }
+
+    .desk-2-core {
+      left: 12px;
+      width: 60px;
+    }
+
+    .desk-4-core {
+      left: 12px;
+      width: 120px;
+    }
+
+    .chair {
+      position: absolute;
+      width: 18px;
+      height: 16px;
+      border: 2px solid #7f8fa3;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.96);
+    }
+
+    .chair-top { top: 4px; }
+    .chair-bottom { bottom: 4px; }
+    .chair-1 { left: 30px; }
+    .chair-2 { left: 66px; }
+    .chair-3 { left: 102px; }
+    .chair-4 { left: 138px; }
+
+    .desk-chair-1 { left: 33px; }
+    .desk-chair-2 { left: 43px; }
+    .desk-chair-3 { left: 84px; }
+    }
+
+    .furniture-screen {
+      width: 95px;
+      height: 12px;
+      border-color: #34495e;
+      background: #34495e;
+      color: #fff;
+      border-radius: 3px;
+    }
+
+    .furniture-shelf {
+      width: 70px;
+      height: 24px;
+      background: rgba(246, 239, 229, 0.94);
+    }
+
+    .ac-1 { left: 126px; top: 72px; }
+    .ac-2 { left: 355px; top: 72px; }
+    .ac-3 { left: 568px; top: 72px; }
+
+    [contenteditable="true"] {
+      outline: 0;
+    }
+
+    [contenteditable="true"]:focus {
+      background: rgba(255, 255, 255, 0.72);
+      box-shadow: inset 0 -2px 0 rgba(24, 32, 42, 0.34);
+    }
+
+    .note {
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+      max-width: 880px;
+    }
+
+    .plan-area {
+      flex: 0 0 auto;
+    }
+
+    .requirements-panel {
+      flex: 0 0 300px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfcfd;
+      padding: 14px 16px;
+      color: var(--ink);
+    }
+
+    .requirements-panel h2 {
+      margin: 0 0 12px;
+      font-size: 16px;
+      line-height: 1.25;
+      letter-spacing: 0;
+    }
+
+    .requirements-panel section {
+      border-top: 1px solid var(--line);
+      padding-top: 11px;
+      margin-top: 11px;
+    }
+
+    .requirements-panel h3 {
+      margin: 0 0 6px;
+      font-size: 14px;
+      line-height: 1.25;
+      letter-spacing: 0;
+    }
+
+    .requirements-panel p,
+    .requirements-panel li {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .requirements-panel p {
+      margin: 0;
+    }
+
+    .requirements-panel ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    @media (max-width: 760px) {
+      header {
+        align-items: start;
+        flex-direction: column;
+      }
+
+      .hint {
+        text-align: left;
+      }
+    }
+
+    @media print {
+      header,
+      .head,
+      .note {
+        display: none;
+      }
+
+      body {
+        background: #fff;
+      }
+
+      main,
+      .canvas-wrap {
+        padding: 0;
+      }
+
+      .shell {
+        border: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1 contenteditable="true">Micas Japan 空白网格平面图</h1>
+      <div class="subtitle" contenteditable="true">外框假设：17.6m × 7.2m，约 126.7㎡。每个大网格约 1m，先用墙线和文字标注画第一稿。</div>
+    </div>
+    <div class="toolbar">
+      <div class="tool-group">
+        <span class="tool-label">绘制</span>
+        <button type="button" id="addWallBtn">墙线</button>
+        <button type="button" id="addLogoWallBtn">Logo墙</button>
+        <button type="button" id="addDoorBtn">门线</button>
+        <button type="button" id="addMeasureBtn">测距虚线</button>
+        <button type="button" id="addTextBtn">文本框</button>
+      </div>
+      <div class="tool-group">
+        <span class="tool-label">家具</span>
+        <button type="button" id="addDesk2Btn">2人桌</button>
+        <button type="button" id="addDesk4Btn">4人桌</button>
+        <button type="button" id="addMeetingTableBtn">8人桌</button>
+        <button type="button" id="addScreenBtn">大屏幕</button>
+        <button type="button" id="addShelfBtn">货架</button>
+      </div>
+      <div class="tool-group">
+        <span class="tool-label">编辑</span>
+        <button type="button" id="rotateFurnitureBtn">旋转90°</button>
+        <button type="button" id="toggleDoorBtn">门方向</button>
+        <button type="button" id="bringForwardBtn">上移一层</button>
+        <button type="button" id="sendBackwardBtn">下移一层</button>
+        <button type="button" id="deleteBtn">删除选中</button>
+      </div>
+      <div class="tool-group">
+        <span class="tool-label">方案</span>
+        <button type="button" id="savePlanBtn">保存方案</button>
+        <button type="button" id="exportPlansBtn">导出数据</button>
+        <button type="button" id="importPlansBtn">导入数据</button>
+        <input type="file" id="importPlansInput" accept="application/json" hidden />
+        <select id="planSelect" title="查看已保存方案">
+          <option value="">查看方案</option>
+        </select>
+        <span class="save-status" id="saveStatus">已保存 0 个方案</span>
+        <button type="button" id="clearBtn">清空</button>
+        <button type="button" onclick="window.print()">打印 / 导出 PDF</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="shell">
+      <div class="head">
+        <div class="title">17.6m × 7.2m 空白网格</div>
+        <div class="hint">右侧 1/4 固定；墙线显示长度；门线可切换开门方向；方案可命名保存</div>
+      </div>
+      <div class="canvas-wrap">
+        <div class="plan-area">
+          <div class="floor" id="floor">
+            <div class="reference-dot dot-t1"></div>
+            <div class="reference-dot dot-t2"></div>
+            <div class="reference-dot dot-t3"></div>
+            <div class="reference-dot dot-t4"></div>
+            <div class="reference-dot dot-t5"></div>
+            <div class="reference-dot dot-b1"></div>
+            <div class="reference-dot dot-b2"></div>
+            <div class="reference-dot dot-b3"></div>
+            <div class="reference-dot dot-b4"></div>
+            <div class="reference-dot dot-b5"></div>
+            <div class="fixed-stair">楼梯 / 共用通道</div>
+            <div class="fixed-entry-door"></div>
+            <div class="fixed-core" title="固定公共设施区">
+              <div class="fixed-cell fixed-eps">EPS</div>
+              <div class="fixed-cell fixed-fs">PS</div>
+              <div class="fixed-cell fixed-hall">入口<br>前室</div>
+              <div class="fixed-cell fixed-sink">水回り</div>
+              <div class="fixed-cell fixed-ev">EV</div>
+              <div class="fixed-cell fixed-wc1">WC</div>
+              <div class="fixed-cell fixed-wc2">WC</div>
+              <div class="fixed-cell fixed-ps">PS</div>
+              <div class="fixed-cell fixed-balcony">バルコニー</div>
+            </div>
+          </div>
+          <div class="note" contenteditable="true">
+            备注：右侧约 1/4 灰色区按原平面图固定公共设施位置绘制，不参与调整；上下墙面的黑色点用于辅助对齐原图。橙色虚线方框为暂定中央空调位置，按 0.9m × 0.9m 参考尺寸标示。你可以用“墙线”画隔断，用“门线”标识门，用“文本框”标注入口/Logo墙、会议室、办公区、仓库、机房/测试区等。画好后我再基于你的版本优化比例、动线和施工可行性。
+          </div>
+        </div>
+        <aside class="requirements-panel" contenteditable="true">
+          <h2>设计尺寸要求</h2>
+          <section>
+            <h3>小型机房</h3>
+            <ul>
+              <li>建议尺寸：2.5m × 3.0m = 7.5㎡。</li>
+              <li>标准 19 英寸机柜：通常宽 0.6m，深 1.0-1.2m。</li>
+              <li>机柜前后维护空间：前后各留 0.8-1.0m。</li>
+            </ul>
+          </section>
+          <section>
+            <h3>8人会议室</h3>
+            <ul>
+              <li>建议尺寸：3.6m × 4.8m = 约 17㎡。</li>
+              <li>会议室门：按日本普通办公室门，建议有效宽度 0.8-0.9m；客户来访场景优先按 0.9m。</li>
+            </ul>
+          </section>
+          <section>
+            <h3>主通道</h3>
+            <p>建议宽度：1.2m。</p>
+          </section>
+          <section>
+            <h3>中央空调</h3>
+            <p>暂定 3 台，按常见天花嵌入式室内机约 0.9m × 0.9m 标示；最终以现场设备尺寸和物业图纸为准。</p>
+          </section>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const storageKey = "micas-japan-wall-grid-v2";
+    const plansKey = "micas-japan-wall-grid-plans-v1";
+    const floor = document.getElementById("floor");
+    const planSelect = document.getElementById("planSelect");
+    const saveStatus = document.getElementById("saveStatus");
+    let activeItem = null;
+    let activeHandle = null;
+    let activeTextResize = null;
+    let selectedItem = null;
+    let startX = 0;
+    let startY = 0;
+    let startLeft = 0;
+    let startTop = 0;
+    let startWidth = 0;
+    let startHeight = 0;
+    let startAngle = 0;
+
+    function addMeters() {
+      for (let i = 0; i <= 17; i += 1) {
+        const marker = document.createElement("div");
+        marker.className = "meter-x";
+        marker.style.left = `${i * 50}px`;
+        marker.textContent = `${i}m`;
+        floor.appendChild(marker);
+      }
+
+      for (let i = 0; i <= 7; i += 1) {
+        const marker = document.createElement("div");
+        marker.className = "meter-y";
+        marker.style.top = `${i * 50}px`;
+        marker.textContent = `${i}m`;
+        floor.appendChild(marker);
+      }
+    }
+
+    function makeWall(data = {}) {
+      const wall = document.createElement("div");
+      wall.className = data.type === "door" ? "wall-line door-line" : "wall-line";
+      if (data.type === "measure") wall.className = "wall-line measure-line";
+      if (data.type === "logo-wall") wall.className = "wall-line logo-wall-line";
+      if (data.type === "door" && data.swing === "down") wall.classList.add("swing-down");
+      wall.dataset.item = data.type || "wall";
+      wall.style.left = data.left || "70px";
+      wall.style.top = data.top || "70px";
+      wall.style.width = data.width || (data.type === "door" ? "72px" : "180px");
+      wall.dataset.angle = data.angle || "0";
+      wall.dataset.swing = data.swing || "up";
+      wall.style.transform = `rotate(${wall.dataset.angle}deg)`;
+      wall.innerHTML = "<span class=\"length-label\"></span><span class=\"wall-handle\" title=\"拖动调整长度和角度\"></span>";
+      wall.addEventListener("pointerdown", startDrag);
+      wall.querySelector(".wall-handle").addEventListener("pointerdown", startResizeWall);
+      floor.appendChild(wall);
+      updateLengthLabel(wall);
+      return wall;
+    }
+
+    function makeText(data = {}) {
+      const text = document.createElement("div");
+      text.className = "text-box";
+      text.dataset.item = "text";
+      text.style.left = data.left || "70px";
+      text.style.top = data.top || "130px";
+      text.style.width = data.width || "150px";
+      text.style.height = data.height || "";
+      text.innerHTML = `<div class="text-content" contenteditable="true">${data.html || "说明文字"}</div><span class="text-resize-handle" title="拖动调整文本框大小"></span>`;
+      text.addEventListener("pointerdown", startDrag);
+      text.querySelector(".text-content").addEventListener("input", saveState);
+      text.querySelector(".text-resize-handle").addEventListener("pointerdown", startResizeText);
+      text.addEventListener("pointerup", saveState);
+      floor.appendChild(text);
+      return text;
+    }
+
+    function makeAc(data = {}) {
+      const ac = document.createElement("div");
+      ac.className = `fixed-ac ${data.className || ""}`.trim();
+      ac.dataset.item = "ac";
+      ac.style.left = data.left || "126px";
+      ac.style.top = data.top || "72px";
+      ac.style.width = data.width || "45px";
+      ac.style.height = data.height || "45px";
+      ac.innerHTML = data.html || "空调<br>0.9×0.9m";
+      ac.addEventListener("pointerdown", startDrag);
+      floor.appendChild(ac);
+      return ac;
+    }
+
+    function makeFurniture(data = {}) {
+      const furniture = document.createElement("div");
+      const kind = data.kind || "desk";
+      furniture.className = `furniture furniture-${kind}`;
+      furniture.dataset.item = "furniture";
+      furniture.dataset.kind = kind;
+      furniture.style.left = data.left || "90px";
+      furniture.style.top = data.top || "180px";
+      if (data.width && !(kind === "meeting-table" && data.html?.includes("2.4×1.1m"))) furniture.style.width = data.width;
+      if (data.height && !(kind === "meeting-table" && data.html?.includes("2.4×1.1m"))) furniture.style.height = data.height;
+      furniture.dataset.angle = data.angle || "0";
+      furniture.style.transform = `rotate(${furniture.dataset.angle}deg)`;
+      const shouldUpgradeDesk = (kind === "desk-2" || kind === "desk-4") && data.html && !data.html.includes("desk-core");
+      furniture.innerHTML = kind === "meeting-table" && data.html?.includes("2.4×1.1m") || shouldUpgradeDesk ? "" : (data.html || {
+        "desk-2": "<span class=\"chair chair-top desk-chair-1\"></span><span class=\"desk-core desk-2-core\">2人桌<br>1.2×1.4m</span><span class=\"chair chair-bottom desk-chair-1\"></span>",
+        "desk-4": "<span class=\"chair chair-top desk-chair-2\"></span><span class=\"chair chair-top desk-chair-3\"></span><span class=\"desk-core desk-4-core\">4人桌<br>2.4×1.4m</span><span class=\"chair chair-bottom desk-chair-2\"></span><span class=\"chair chair-bottom desk-chair-3\"></span>",
+        "meeting-table": "<span class=\"chair chair-top chair-1\"></span><span class=\"chair chair-top chair-2\"></span><span class=\"chair chair-top chair-3\"></span><span class=\"chair chair-top chair-4\"></span><span class=\"meeting-table-core\">8人桌<br>3.2×1.2m</span><span class=\"chair chair-bottom chair-1\"></span><span class=\"chair chair-bottom chair-2\"></span><span class=\"chair chair-bottom chair-3\"></span><span class=\"chair chair-bottom chair-4\"></span>",
+        screen: "大屏幕",
+        shelf: "货架"
+      }[kind] || "家具");
+      if (!furniture.innerHTML) {
+        furniture.innerHTML = kind === "desk-2"
+          ? "<span class=\"chair chair-top desk-chair-1\"></span><span class=\"desk-core desk-2-core\">2人桌<br>1.2×1.4m</span><span class=\"chair chair-bottom desk-chair-1\"></span>"
+          : kind === "desk-4"
+            ? "<span class=\"chair chair-top desk-chair-2\"></span><span class=\"chair chair-top desk-chair-3\"></span><span class=\"desk-core desk-4-core\">4人桌<br>2.4×1.4m</span><span class=\"chair chair-bottom desk-chair-2\"></span><span class=\"chair chair-bottom desk-chair-3\"></span>"
+            : "<span class=\"chair chair-top chair-1\"></span><span class=\"chair chair-top chair-2\"></span><span class=\"chair chair-top chair-3\"></span><span class=\"chair chair-top chair-4\"></span><span class=\"meeting-table-core\">8人桌<br>3.2×1.2m</span><span class=\"chair chair-bottom chair-1\"></span><span class=\"chair chair-bottom chair-2\"></span><span class=\"chair chair-bottom chair-3\"></span><span class=\"chair chair-bottom chair-4\"></span>";
+      }
+      furniture.addEventListener("pointerdown", startDrag);
+      floor.appendChild(furniture);
+      return furniture;
+    }
+
+    function items() {
+      return Array.from(floor.querySelectorAll("[data-item]"));
+    }
+
+    function serializeItems() {
+      return items().map((item) => ({
+        type: item.dataset.item,
+        left: item.style.left,
+        top: item.style.top,
+        width: item.style.width || getComputedStyle(item).width,
+        height: item.dataset.item === "text" || item.dataset.item === "ac" || item.dataset.item === "furniture" ? (item.style.height || getComputedStyle(item).height) : "",
+        angle: item.dataset.angle || "0",
+        swing: item.dataset.swing || "up",
+        kind: item.dataset.kind || "",
+        html: item.dataset.item === "text" ? (item.querySelector(".text-content")?.innerHTML || "") : (item.dataset.item === "ac" || item.dataset.item === "furniture" ? item.innerHTML : "")
+      }));
+    }
+
+    function saveState() {
+      const state = serializeItems();
+      localStorage.setItem(storageKey, JSON.stringify(state));
+    }
+
+    function clearCanvasItems() {
+      items().forEach((item) => item.remove());
+      selectedItem = null;
+    }
+
+    function loadItems(state) {
+      clearCanvasItems();
+      state.forEach((data) => {
+        if (data.type === "wall" || data.type === "door" || data.type === "measure" || data.type === "logo-wall") makeWall(data);
+        if (data.type === "text") makeText(data);
+        if (data.type === "ac") makeAc(data);
+        if (data.type === "furniture") makeFurniture(data);
+      });
+      ensureDefaultAcs();
+    }
+
+    function ensureDefaultAcs() {
+      if (floor.querySelector("[data-item='ac']")) return;
+      makeAc({ left: "126px", top: "72px" });
+      makeAc({ left: "355px", top: "72px" });
+      makeAc({ left: "568px", top: "72px" });
+      saveState();
+    }
+
+    function loadState() {
+      const raw = localStorage.getItem(storageKey);
+      if (!raw) return;
+      try {
+        loadItems(JSON.parse(raw));
+      } catch {
+        localStorage.removeItem(storageKey);
+      }
+    }
+
+    async function loadBundledPlansIfEmpty() {
+      if (loadPlans().length > 0 || items().length > 0) return;
+      try {
+        const response = await fetch("micas-japan-office-plans-001.json", { cache: "no-store" });
+        if (!response.ok) return;
+        const payload = await response.json();
+        if (Array.isArray(payload.plans)) savePlans(payload.plans);
+        if (Array.isArray(payload.currentItems)) {
+          loadItems(payload.currentItems);
+          saveState();
+        }
+      } catch {
+        // Local file previews may block fetch; GitHub Pages can load the bundled JSON.
+      }
+    }
+
+    function loadPlans() {
+      try {
+        return JSON.parse(localStorage.getItem(plansKey) || "[]");
+      } catch {
+        localStorage.removeItem(plansKey);
+        return [];
+      }
+    }
+
+    function savePlans(plans) {
+      localStorage.setItem(plansKey, JSON.stringify(plans));
+      renderPlanOptions();
+    }
+
+    function renderPlanOptions() {
+      const plans = loadPlans();
+      planSelect.innerHTML = "<option value=\"\">查看方案</option>";
+      plans.forEach((plan) => {
+        const option = document.createElement("option");
+        option.value = plan.id;
+        option.textContent = plan.name;
+        planSelect.appendChild(option);
+      });
+      saveStatus.textContent = `已保存 ${plans.length} 个方案`;
+    }
+
+    function updateLengthLabel(wall) {
+      const label = wall.querySelector(".length-label");
+      if (!label) return;
+      const px = parseFloat(wall.style.width) || wall.offsetWidth;
+      label.textContent = `${(px / 50).toFixed(1)}m`;
+    }
+
+    function startDrag(event) {
+      if (event.target.classList.contains("wall-handle")) return;
+      if (event.target.classList.contains("text-resize-handle")) return;
+      if (event.target.isContentEditable) return;
+      activeItem = event.currentTarget;
+      activeHandle = null;
+      activeTextResize = null;
+      selectItem(activeItem);
+      startX = event.clientX;
+      startY = event.clientY;
+      startLeft = parseFloat(activeItem.style.left) || 0;
+      startTop = parseFloat(activeItem.style.top) || 0;
+      activeItem.setPointerCapture(event.pointerId);
+    }
+
+    function startResizeWall(event) {
+      event.stopPropagation();
+      activeHandle = event.currentTarget.parentElement;
+      activeItem = null;
+      selectItem(activeHandle);
+      const floorRect = floor.getBoundingClientRect();
+      startX = event.clientX;
+      startY = event.clientY;
+      startLeft = parseFloat(activeHandle.style.left) || 0;
+      startTop = parseFloat(activeHandle.style.top) || 0;
+      startWidth = parseFloat(activeHandle.style.width) || activeHandle.offsetWidth;
+      startAngle = parseFloat(activeHandle.dataset.angle) || 0;
+      activeHandle.setPointerCapture(event.pointerId);
+      floor.dataset.left = `${floorRect.left}`;
+      floor.dataset.top = `${floorRect.top}`;
+    }
+
+    function startResizeText(event) {
+      event.stopPropagation();
+      activeTextResize = event.currentTarget.parentElement;
+      activeItem = null;
+      activeHandle = null;
+      selectItem(activeTextResize);
+      startX = event.clientX;
+      startY = event.clientY;
+      startWidth = parseFloat(activeTextResize.style.width) || activeTextResize.offsetWidth;
+      startHeight = parseFloat(activeTextResize.style.height) || activeTextResize.offsetHeight;
+      activeTextResize.setPointerCapture(event.pointerId);
+    }
+
+    function selectItem(item) {
+      selectedItem = item;
+      floor.querySelectorAll("[data-item]").forEach((candidate) => candidate.classList.remove("selected"));
+      item?.classList.add("selected");
+    }
+
+    function moveLayer(direction) {
+      if (!selectedItem) return;
+      const editableItems = items();
+      const index = editableItems.indexOf(selectedItem);
+      if (direction === "up" && index < editableItems.length - 1) {
+        floor.insertBefore(editableItems[index + 1], selectedItem);
+      }
+      if (direction === "down" && index > 0) {
+        floor.insertBefore(selectedItem, editableItems[index - 1]);
+      }
+      saveState();
+    }
+
+    window.addEventListener("pointermove", (event) => {
+      if (activeItem) {
+        const nextLeft = startLeft + event.clientX - startX;
+        const nextTop = startTop + event.clientY - startY;
+        const maxLeft = floor.clientWidth - 4;
+        const maxTop = floor.clientHeight - 4;
+        activeItem.style.left = `${Math.max(0, Math.min(maxLeft, nextLeft))}px`;
+        activeItem.style.top = `${Math.max(0, Math.min(maxTop, nextTop))}px`;
+      }
+
+      if (activeHandle) {
+        const floorLeft = parseFloat(floor.dataset.left) || 0;
+        const floorTop = parseFloat(floor.dataset.top) || 0;
+        const originX = floorLeft + startLeft;
+        const originY = floorTop + startTop + 4;
+        const dx = event.clientX - originX;
+        const dy = event.clientY - originY;
+        const length = Math.max(32, Math.hypot(dx, dy));
+        const angle = Math.round(Math.atan2(dy, dx) * 180 / Math.PI);
+        activeHandle.style.width = `${length}px`;
+        activeHandle.dataset.angle = `${angle}`;
+        activeHandle.style.transform = `rotate(${angle}deg)`;
+        updateLengthLabel(activeHandle);
+      }
+
+      if (activeTextResize) {
+        activeTextResize.style.width = `${Math.max(80, startWidth + event.clientX - startX)}px`;
+        activeTextResize.style.height = `${Math.max(34, startHeight + event.clientY - startY)}px`;
+      }
+    });
+
+    window.addEventListener("pointerup", () => {
+      if (activeItem || activeHandle || activeTextResize) saveState();
+      activeItem = null;
+      activeHandle = null;
+      activeTextResize = null;
+    });
+
+    document.getElementById("addWallBtn").addEventListener("click", () => {
+      const count = items().length;
+      selectItem(makeWall({
+        left: `${70 + (count % 6) * 24}px`,
+        top: `${70 + (count % 6) * 22}px`
+      }));
+      saveState();
+    });
+
+    document.getElementById("addLogoWallBtn").addEventListener("click", () => {
+      const count = items().length;
+      selectItem(makeWall({
+        type: "logo-wall",
+        left: `${620 + (count % 4) * 12}px`,
+        top: `${190 + (count % 4) * 14}px`,
+        width: "130px"
+      }));
+      saveState();
+    });
+
+    document.getElementById("addDoorBtn").addEventListener("click", () => {
+      const count = items().length;
+      selectItem(makeWall({
+        type: "door",
+        left: `${120 + (count % 6) * 24}px`,
+        top: `${120 + (count % 6) * 22}px`,
+        width: "72px"
+      }));
+      saveState();
+    });
+
+    document.getElementById("addMeasureBtn").addEventListener("click", () => {
+      const count = items().length;
+      selectItem(makeWall({
+        type: "measure",
+        left: `${110 + (count % 6) * 24}px`,
+        top: `${160 + (count % 6) * 22}px`,
+        width: "120px"
+      }));
+      saveState();
+    });
+
+    document.getElementById("addTextBtn").addEventListener("click", () => {
+      const count = items().length;
+      selectItem(makeText({
+        left: `${70 + (count % 5) * 30}px`,
+        top: `${130 + (count % 5) * 24}px`
+      }));
+      saveState();
+    });
+
+    document.getElementById("addDesk2Btn").addEventListener("click", () => {
+      const count = items().length;
+      selectItem(makeFurniture({
+        kind: "desk-2",
+        left: `${100 + (count % 6) * 24}px`,
+        top: `${190 + (count % 6) * 18}px`
+      }));
+      saveState();
+    });
+
+    document.getElementById("addDesk4Btn").addEventListener("click", () => {
+      const count = items().length;
+      selectItem(makeFurniture({
+        kind: "desk-4",
+        left: `${130 + (count % 6) * 24}px`,
+        top: `${200 + (count % 6) * 18}px`
+      }));
+      saveState();
+    });
+
+    document.getElementById("addMeetingTableBtn").addEventListener("click", () => {
+      const count = items().length;
+      selectItem(makeFurniture({
+        kind: "meeting-table",
+        left: `${360 + (count % 4) * 18}px`,
+        top: `${180 + (count % 4) * 18}px`
+      }));
+      saveState();
+    });
+
+    document.getElementById("addScreenBtn").addEventListener("click", () => {
+      const count = items().length;
+      selectItem(makeFurniture({
+        kind: "screen",
+        left: `${430 + (count % 4) * 18}px`,
+        top: `${140 + (count % 4) * 18}px`
+      }));
+      saveState();
+    });
+
+    document.getElementById("addShelfBtn").addEventListener("click", () => {
+      const count = items().length;
+      selectItem(makeFurniture({
+        kind: "shelf",
+        left: `${520 + (count % 4) * 18}px`,
+        top: `${270 + (count % 4) * 18}px`
+      }));
+      saveState();
+    });
+
+    document.getElementById("rotateFurnitureBtn").addEventListener("click", () => {
+      if (!selectedItem || selectedItem.dataset.item !== "furniture") return;
+      const nextAngle = ((parseFloat(selectedItem.dataset.angle) || 0) + 90) % 360;
+      selectedItem.dataset.angle = `${nextAngle}`;
+      selectedItem.style.transform = `rotate(${nextAngle}deg)`;
+      saveState();
+    });
+
+    document.getElementById("toggleDoorBtn").addEventListener("click", () => {
+      if (!selectedItem || selectedItem.dataset.item !== "door") return;
+      const next = selectedItem.dataset.swing === "down" ? "up" : "down";
+      selectedItem.dataset.swing = next;
+      selectedItem.classList.toggle("swing-down", next === "down");
+      saveState();
+    });
+
+    document.getElementById("bringForwardBtn").addEventListener("click", () => {
+      moveLayer("up");
+    });
+
+    document.getElementById("sendBackwardBtn").addEventListener("click", () => {
+      moveLayer("down");
+    });
+
+    document.getElementById("deleteBtn").addEventListener("click", () => {
+      if (!selectedItem) return;
+      selectedItem.remove();
+      selectedItem = null;
+      saveState();
+    });
+
+    document.getElementById("savePlanBtn").addEventListener("click", () => {
+      const plans = loadPlans();
+      const defaultName = `方案 ${plans.length + 1}`;
+      const name = window.prompt("请输入方案名称", defaultName);
+      if (!name) return;
+      plans.push({
+        id: `${Date.now()}`,
+        name,
+        savedAt: new Date().toISOString(),
+        items: serializeItems()
+      });
+      savePlans(plans);
+      planSelect.value = plans[plans.length - 1].id;
+    });
+
+    document.getElementById("exportPlansBtn").addEventListener("click", () => {
+      const payload = {
+        exportedAt: new Date().toISOString(),
+        currentItems: serializeItems(),
+        plans: loadPlans()
+      };
+      const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "micas-japan-office-plans.json";
+      link.click();
+      URL.revokeObjectURL(url);
+    });
+
+    document.getElementById("importPlansBtn").addEventListener("click", () => {
+      document.getElementById("importPlansInput").click();
+    });
+
+    document.getElementById("importPlansInput").addEventListener("change", (event) => {
+      const file = event.target.files?.[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = () => {
+        try {
+          const payload = JSON.parse(reader.result);
+          const plans = Array.isArray(payload.plans) ? payload.plans : [];
+          savePlans(plans);
+          if (Array.isArray(payload.currentItems)) {
+            loadItems(payload.currentItems);
+            saveState();
+          }
+        } catch {
+          window.alert("方案数据无法读取，请确认选择的是导出的 JSON 文件。");
+        }
+      };
+      reader.readAsText(file);
+      event.target.value = "";
+    });
+
+    planSelect.addEventListener("change", () => {
+      if (!planSelect.value) return;
+      const plan = loadPlans().find((item) => item.id === planSelect.value);
+      if (!plan) return;
+      loadItems(plan.items || []);
+      saveState();
+    });
+
+    document.getElementById("clearBtn").addEventListener("click", () => {
+      clearCanvasItems();
+      ensureDefaultAcs();
+      localStorage.removeItem(storageKey);
+    });
+
+    addMeters();
+    renderPlanOptions();
+    loadState();
+    ensureDefaultAcs();
+    loadBundledPlansIfEmpty();
+  </script>
+</body>
+</html>
