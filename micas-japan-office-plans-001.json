@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-05-25T13:55:38.476Z",
+  "exportedAt": "2026-05-25T14:11:34.804Z",
   "currentItems": [
     {
       "type": "wall",
@@ -86,17 +86,6 @@
       "height": "",
       "angle": "89",
       "swing": "down",
-      "kind": "",
-      "html": ""
-    },
-    {
-      "type": "door",
-      "left": "646.015626px",
-      "top": "192.960938px",
-      "width": "58.313537px",
-      "height": "",
-      "angle": "-90",
-      "swing": "up",
       "kind": "",
       "html": ""
     },
@@ -363,6 +352,17 @@
       "swing": "up",
       "kind": "shelf",
       "html": "货架"
+    },
+    {
+      "type": "door",
+      "left": "646.394532px",
+      "top": "207.742188px",
+      "width": "58.574642px",
+      "height": "",
+      "angle": "-90",
+      "swing": "down",
+      "kind": "",
+      "html": ""
     }
   ],
   "plans": [
@@ -3898,6 +3898,1093 @@
           "height": "",
           "angle": "-89",
           "swing": "up",
+          "kind": "",
+          "html": ""
+        }
+      ]
+    },
+    {
+      "id": "1779717478045",
+      "name": "初始00",
+      "savedAt": "2026-05-25T13:57:58.045Z",
+      "items": [
+        {
+          "type": "ac",
+          "left": "85.339844px",
+          "top": "153.269531px",
+          "width": "45px",
+          "height": "45px",
+          "angle": "0",
+          "swing": "up",
+          "kind": "",
+          "html": "空调<br>0.9×0.9m"
+        },
+        {
+          "type": "ac",
+          "left": "304.894532px",
+          "top": "150.089844px",
+          "width": "45px",
+          "height": "45px",
+          "angle": "0",
+          "swing": "up",
+          "kind": "",
+          "html": "空调<br>0.9×0.9m"
+        },
+        {
+          "type": "ac",
+          "left": "521.113281px",
+          "top": "157.105469px",
+          "width": "45px",
+          "height": "45px",
+          "angle": "0",
+          "swing": "up",
+          "kind": "",
+          "html": "空调<br>0.9×0.9m"
+        },
+        {
+          "type": "door",
+          "left": "647.152344px",
+          "top": "221.65625px",
+          "width": "73.42776px",
+          "height": "",
+          "angle": "-90",
+          "swing": "up",
+          "kind": "",
+          "html": ""
+        }
+      ]
+    },
+    {
+      "id": "1779717506445",
+      "name": "初始01",
+      "savedAt": "2026-05-25T13:58:26.445Z",
+      "items": [
+        {
+          "type": "ac",
+          "left": "85.339844px",
+          "top": "153.269531px",
+          "width": "45px",
+          "height": "45px",
+          "angle": "0",
+          "swing": "up",
+          "kind": "",
+          "html": "空调<br>0.9×0.9m"
+        },
+        {
+          "type": "ac",
+          "left": "304.894532px",
+          "top": "150.089844px",
+          "width": "45px",
+          "height": "45px",
+          "angle": "0",
+          "swing": "up",
+          "kind": "",
+          "html": "空调<br>0.9×0.9m"
+        },
+        {
+          "type": "ac",
+          "left": "521.113281px",
+          "top": "157.105469px",
+          "width": "45px",
+          "height": "45px",
+          "angle": "0",
+          "swing": "up",
+          "kind": "",
+          "html": "空调<br>0.9×0.9m"
+        },
+        {
+          "type": "door",
+          "left": "647.152344px",
+          "top": "212.101563px",
+          "width": "62.204163px",
+          "height": "",
+          "angle": "-90",
+          "swing": "up",
+          "kind": "",
+          "html": ""
+        }
+      ]
+    },
+    {
+      "id": "1779717525060",
+      "name": "方案 001",
+      "savedAt": "2026-05-25T13:58:45.060Z",
+      "items": [
+        {
+          "type": "wall",
+          "left": "396.4375px",
+          "top": "294.261719px",
+          "width": "222.896406px",
+          "height": "",
+          "angle": "-90",
+          "swing": "up",
+          "kind": "",
+          "html": ""
+        },
+        {
+          "type": "wall",
+          "left": "392.769532px",
+          "top": "72.667968px",
+          "width": "179.281445px",
+          "height": "",
+          "angle": "0",
+          "swing": "up",
+          "kind": "",
+          "html": ""
+        },
+        {
+          "type": "wall",
+          "left": "570.796875px",
+          "top": "69.394531px",
+          "width": "223.907988px",
+          "height": "",
+          "angle": "90",
+          "swing": "up",
+          "kind": "",
+          "html": ""
+        },
+        {
+          "type": "wall",
+          "left": "393.339844px",
+          "top": "291.26953px",
+          "width": "176.665824px",
+          "height": "",
+          "angle": "0",
+          "swing": "up",
+          "kind": "",
+          "html": ""
+        },
+        {
+          "type": "wall",
+          "left": "572.492188px",
+          "top": "254.664062px",
+          "width": "74.453627px",
+          "height": "",
+          "angle": "0",
+          "swing": "up",
+          "kind": "",
+          "html": ""
+        },
+        {
+          "type": "wall",
+          "left": "0px",
+          "top": "114.992188px",
+          "width": "149.411087px",
+          "height": "",
+          "angle": "0",
+          "swing": "up",
+          "kind": "",
+          "html": ""
+        },
+        {
+          "type": "wall",
+          "left": "149.417969px",
+          "top": "116.71875px",
+          "width": "125.147841px",
+          "height": "",
+          "angle": "-90",
+          "swing": "up",
+          "kind": "",
+          "html": ""
+        },
+        {
+          "type": "door",
+          "left": "571.312498px",
+          "top": "68.51172px",
+          "width": "46.230275px",
+          "height": "",
+          "angle": "89",
+          "swing": "down",
+          "kind": "",
+          "html": ""
+        },
+        {
+          "type": "door",
+          "left": "646.437501px",
+          "top": "210.242188px",
+          "width": "58.313537px",
+          "height": "",
+          "angle": "-90",
+          "swing": "up",
+          "kind": "",
+          "html": ""
+        },
+        {
+          "type": "door",
+          "left": "148.636719px",
+          "top": "50.054688px",
+          "width": "56.623769px",
+          "height": "",
+          "angle": "-89",
+          "swing": "up",
+          "kind": "",
+          "html": ""
+        },
+        {
+          "type": "text",
+          "left": "14.136719px",
+          "top": "42.601562px",
+          "width": "96.792969px",
+          "height": "48.636719px",
+          "angle": "0",
+          "swing": "up",
+          "kind": "",
+          "html": "机房<div>3m x 2.5m</div>"
+        },
+        {
+          "type": "text",
+          "left": "393.562502px",
+          "top": "73.828126px",
+          "width": "116.285157px",
+          "height": "44.296875px",
+          "angle": "0",
+          "swing": "up",
+          "kind": "",
+          "html": "会议室<div>4.8m x 3.6m</div>"
+        },
+        {
+          "type": "measure",
+          "left": "520.269532px",
+          "top": "74.402344px",
+          "width": "77.431675px",
+          "height": "",
+          "angle": "-90",
+          "swing": "up",
+          "kind": "",
+          "html": ""
+        },
+        {
+          "type": "measure",
+          "left": "569.648438px",
+          "top": "72.335938px",
+          "width": "76.74408px",
+          "height": "",
+          "angle": "0",
+          "swing": "up",
+          "kind": "",
+          "html": ""
+        },
+        {
+          "type": "measure",
+          "left": "417.992188px",
+          "top": "339.324219px",
+          "width": "41.407153px",
+          "height": "",
+          "angle": "-90",
+          "swing": "up",
+          "kind": "",
+          "html": ""
+        },
+        {
+          "type": "measure",
+          "left": "110.199219px",
+          "top": "340px",
+          "width": "218.795875px",
+          "height": "",
+          "angle": "-90",
+          "swing": "up",
+          "kind": "",
+          "html": ""
+        },
+        {
+          "type": "measure",
+          "left": "0px",
+          "top": "249.414063px",
+          "width": "389.528919px",
+          "height": "",
+          "angle": "0",
+          "swing": "up",
+          "kind": "",
+          "html": ""
+        },
+        {
+          "type": "measure",
+          "left": "149.894531px",
+          "top": "88.101563px",
+          "width": "240.605583px",
+          "height": "",
+          "angle": "0",
+          "swing": "up",
+          "kind": "",
+          "html": ""
+        },
+        {
+          "type": "ac",
+          "left": "15.445313px",
+          "top": "20.050782px",
+          "width": "45px",
+          "height": "45px",
+          "angle": "0",
+          "swing": "up",
+          "kind": "",
+          "html": "空调<br>0.9×0.9m"
+        },
+        {
+          "type": "ac",
+          "left": "291.355469px",
+          "top": "157.339844px",
+          "width": "45px",
+          "height": "45px",
+          "angle": "0",
+          "swing": "up",
+          "kind": "",
+          "html": "空调<br>0.9×0.9m"
+        },
+        {
+          "type": "ac",
+          "left": "465.617188px",
+          "top": "155.859375px",
+          "width": "45px",
+          "height": "45px",
+          "angle": "0",
+          "swing": "up",
+          "kind": "",
+          "html": "空调<br>0.9×0.9m"
+        },
+        {
+          "type": "furniture",
+          "left": "391.230468px",
+          "top": "152.128906px",
+          "width": "190px",
+          "height": "86px",
+          "angle": "270",
+          "swing": "up",
+          "kind": "meeting-table",
+          "html": "<span class=\"chair chair-top chair-1\"></span><span class=\"chair chair-top chair-2\"></span><span class=\"chair chair-top chair-3\"></span><span class=\"chair chair-top chair-4\"></span><span class=\"meeting-table-core\">8人桌<br>3.2×1.2m</span><span class=\"chair chair-bottom chair-1\"></span><span class=\"chair chair-bottom chair-2\"></span><span class=\"chair chair-bottom chair-3\"></span><span class=\"chair chair-bottom chair-4\"></span>"
+        },
+        {
+          "type": "furniture",
+          "left": "463.765625px",
+          "top": "288.046875px",
+          "width": "33.828125px",
+          "height": "16px",
+          "angle": "0",
+          "swing": "up",
+          "kind": "screen",
+          "html": "大屏幕"
+        },
+        {
+          "type": "logo-wall",
+          "left": "574.652344px",
+          "top": "128.027344px",
+          "width": "123.021387px",
+          "height": "",
+          "angle": "90",
+          "swing": "up",
+          "kind": "",
+          "html": ""
+        },
+        {
+          "type": "measure",
+          "left": "607.874999px",
+          "top": "339.304687px",
+          "width": "74.541213px",
+          "height": "",
+          "angle": "-89",
+          "swing": "up",
+          "kind": "",
+          "html": ""
+        }
+      ]
+    },
+    {
+      "id": "1779717600221",
+      "name": "方案 002",
+      "savedAt": "2026-05-25T14:00:00.221Z",
+      "items": [
+        {
+          "type": "wall",
+          "left": "348.894532px",
+          "top": "245.707031px",
+          "width": "173.005226px",
+          "height": "",
+          "angle": "-90",
+          "swing": "up",
+          "kind": "",
+          "html": ""
+        },
+        {
+          "type": "wall",
+          "left": "345.769531px",
+          "top": "72.847656px",
+          "width": "223.781335px",
+          "height": "",
+          "angle": "0",
+          "swing": "up",
+          "kind": "",
+          "html": ""
+        },
+        {
+          "type": "wall",
+          "left": "571.0625px",
+          "top": "69.394531px",
+          "width": "177.111221px",
+          "height": "",
+          "angle": "90",
+          "swing": "up",
+          "kind": "",
+          "html": ""
+        },
+        {
+          "type": "wall",
+          "left": "345.53125px",
+          "top": "243.542969px",
+          "width": "226.2687px",
+          "height": "",
+          "angle": "0",
+          "swing": "up",
+          "kind": "",
+          "html": ""
+        },
+        {
+          "type": "wall",
+          "left": "568.652345px",
+          "top": "244.171874px",
+          "width": "74.453627px",
+          "height": "",
+          "angle": "0",
+          "swing": "up",
+          "kind": "",
+          "html": ""
+        },
+        {
+          "type": "wall",
+          "left": "0px",
+          "top": "114.992188px",
+          "width": "149.411087px",
+          "height": "",
+          "angle": "0",
+          "swing": "up",
+          "kind": "",
+          "html": ""
+        },
+        {
+          "type": "wall",
+          "left": "149.417969px",
+          "top": "116.71875px",
+          "width": "125.147841px",
+          "height": "",
+          "angle": "-90",
+          "swing": "up",
+          "kind": "",
+          "html": ""
+        },
+        {
+          "type": "door",
+          "left": "570.171873px",
+          "top": "70.609376px",
+          "width": "46.230275px",
+          "height": "",
+          "angle": "89",
+          "swing": "down",
+          "kind": "",
+          "html": ""
+        },
+        {
+          "type": "door",
+          "left": "148.636719px",
+          "top": "50.054688px",
+          "width": "56.623769px",
+          "height": "",
+          "angle": "-89",
+          "swing": "up",
+          "kind": "",
+          "html": ""
+        },
+        {
+          "type": "text",
+          "left": "19.957032px",
+          "top": "5.046875px",
+          "width": "87.914063px",
+          "height": "47.226563px",
+          "angle": "0",
+          "swing": "up",
+          "kind": "",
+          "html": "机房<div>3m x 2.5m</div>"
+        },
+        {
+          "type": "text",
+          "left": "377.902346px",
+          "top": "76.023438px",
+          "width": "122.628907px",
+          "height": "47.65625px",
+          "angle": "0",
+          "swing": "up",
+          "kind": "",
+          "html": "会议室<div>4.5m x 3.5m</div>"
+        },
+        {
+          "type": "measure",
+          "left": "520.269532px",
+          "top": "74.402344px",
+          "width": "77.431675px",
+          "height": "",
+          "angle": "-90",
+          "swing": "up",
+          "kind": "",
+          "html": ""
+        },
+        {
+          "type": "measure",
+          "left": "569.648438px",
+          "top": "72.335938px",
+          "width": "76.74408px",
+          "height": "",
+          "angle": "0",
+          "swing": "up",
+          "kind": "",
+          "html": ""
+        },
+        {
+          "type": "measure",
+          "left": "346.386719px",
+          "top": "340px",
+          "width": "93.622832px",
+          "height": "",
+          "angle": "-90",
+          "swing": "up",
+          "kind": "",
+          "html": ""
+        },
+        {
+          "type": "measure",
+          "left": "110.199219px",
+          "top": "340px",
+          "width": "218.795875px",
+          "height": "",
+          "angle": "-90",
+          "swing": "up",
+          "kind": "",
+          "html": ""
+        },
+        {
+          "type": "measure",
+          "left": "0px",
+          "top": "273.195312px",
+          "width": "333.548816px",
+          "height": "",
+          "angle": "0",
+          "swing": "up",
+          "kind": "",
+          "html": ""
+        },
+        {
+          "type": "measure",
+          "left": "148.890625px",
+          "top": "116.324219px",
+          "width": "198.396132px",
+          "height": "",
+          "angle": "0",
+          "swing": "up",
+          "kind": "",
+          "html": ""
+        },
+        {
+          "type": "text",
+          "left": "515.496093px",
+          "top": "293.574219px",
+          "width": "120.816406px",
+          "height": "48.308594px",
+          "angle": "0",
+          "swing": "up",
+          "kind": "",
+          "html": "仓库<div>1.7m x 6.0m</div>"
+        },
+        {
+          "type": "measure",
+          "left": "344.601562px",
+          "top": "305.968749px",
+          "width": "297.550838px",
+          "height": "",
+          "angle": "0",
+          "swing": "up",
+          "kind": "",
+          "html": ""
+        },
+        {
+          "type": "text",
+          "left": "0px",
+          "top": "134.445312px",
+          "width": "193px",
+          "height": "47px",
+          "angle": "0",
+          "swing": "up",
+          "kind": "",
+          "html": "办公区&nbsp;<div>4.4m x 6.7m = 29.48&nbsp;<span style=\"caret-color: rgb(101, 112, 128); color: rgb(101, 112, 128);\">㎡</span></div>"
+        },
+        {
+          "type": "ac",
+          "left": "149.71875px",
+          "top": "197.164062px",
+          "width": "45px",
+          "height": "45px",
+          "angle": "0",
+          "swing": "up",
+          "kind": "",
+          "html": "空调<br>0.9×0.9m"
+        },
+        {
+          "type": "ac",
+          "left": "14.617188px",
+          "top": "54.859375px",
+          "width": "45px",
+          "height": "45px",
+          "angle": "0",
+          "swing": "up",
+          "kind": "",
+          "html": "空调<br>0.9×0.9m"
+        },
+        {
+          "type": "ac",
+          "left": "431.48047px",
+          "top": "126.59375px",
+          "width": "45px",
+          "height": "45px",
+          "angle": "0",
+          "swing": "up",
+          "kind": "",
+          "html": "空调<br>0.9×0.9m"
+        },
+        {
+          "type": "furniture",
+          "left": "313.757813px",
+          "top": "156px",
+          "width": "95px",
+          "height": "12px",
+          "angle": "270",
+          "swing": "up",
+          "kind": "screen",
+          "html": "大屏幕"
+        },
+        {
+          "type": "furniture",
+          "left": "372.187501px",
+          "top": "121.570313px",
+          "width": "190px",
+          "height": "86px",
+          "angle": "0",
+          "swing": "up",
+          "kind": "meeting-table",
+          "html": "<span class=\"chair chair-top chair-1\"></span><span class=\"chair chair-top chair-2\"></span><span class=\"chair chair-top chair-3\"></span><span class=\"chair chair-top chair-4\"></span><span class=\"meeting-table-core\">8人桌<br>3.2×1.2m</span><span class=\"chair chair-bottom chair-1\"></span><span class=\"chair chair-bottom chair-2\"></span><span class=\"chair chair-bottom chair-3\"></span><span class=\"chair chair-bottom chair-4\"></span>"
+        },
+        {
+          "type": "furniture",
+          "left": "13.652344px",
+          "top": "178.078126px",
+          "width": "84px",
+          "height": "96px",
+          "angle": "0",
+          "swing": "up",
+          "kind": "desk-2",
+          "html": "<span class=\"chair chair-top desk-chair-1\"></span><span class=\"desk-core desk-2-core\">2人桌<br>1.2×1.4m</span><span class=\"chair chair-bottom desk-chair-1\"></span>"
+        },
+        {
+          "type": "furniture",
+          "left": "153.847656px",
+          "top": "130.796875px",
+          "width": "144px",
+          "height": "96px",
+          "angle": "0",
+          "swing": "up",
+          "kind": "desk-4",
+          "html": "<span class=\"chair chair-top desk-chair-2\"></span><span class=\"chair chair-top desk-chair-3\"></span><span class=\"desk-core desk-4-core\">4人桌<br>2.4×1.4m</span><span class=\"chair chair-bottom desk-chair-2\"></span><span class=\"chair chair-bottom desk-chair-3\"></span>"
+        },
+        {
+          "type": "furniture",
+          "left": "151.753906px",
+          "top": "230.890625px",
+          "width": "144px",
+          "height": "96px",
+          "angle": "0",
+          "swing": "up",
+          "kind": "desk-4",
+          "html": "<span class=\"chair chair-top desk-chair-2\"></span><span class=\"chair chair-top desk-chair-3\"></span><span class=\"desk-core desk-4-core\">4人桌<br>2.4×1.4m</span><span class=\"chair chair-bottom desk-chair-2\"></span><span class=\"chair chair-bottom desk-chair-3\"></span>"
+        },
+        {
+          "type": "logo-wall",
+          "left": "574.421874px",
+          "top": "113.804688px",
+          "width": "122.042815px",
+          "height": "",
+          "angle": "90",
+          "swing": "up",
+          "kind": "",
+          "html": ""
+        },
+        {
+          "type": "furniture",
+          "left": "388.734375px",
+          "top": "256.222656px",
+          "width": "70px",
+          "height": "24px",
+          "angle": "0",
+          "swing": "up",
+          "kind": "shelf",
+          "html": "货架"
+        },
+        {
+          "type": "furniture",
+          "left": "469.347656px",
+          "top": "255.101562px",
+          "width": "70px",
+          "height": "24px",
+          "angle": "0",
+          "swing": "up",
+          "kind": "shelf",
+          "html": "货架"
+        },
+        {
+          "type": "furniture",
+          "left": "550.035157px",
+          "top": "252.535157px",
+          "width": "70px",
+          "height": "24px",
+          "angle": "0",
+          "swing": "up",
+          "kind": "shelf",
+          "html": "货架"
+        },
+        {
+          "type": "door",
+          "left": "646.394532px",
+          "top": "207.742188px",
+          "width": "58.574642px",
+          "height": "",
+          "angle": "-90",
+          "swing": "down",
+          "kind": "",
+          "html": ""
+        }
+      ]
+    },
+    {
+      "id": "1779717618005",
+      "name": "方案 001",
+      "savedAt": "2026-05-25T14:00:18.005Z",
+      "items": [
+        {
+          "type": "wall",
+          "left": "396.4375px",
+          "top": "294.261719px",
+          "width": "222.896406px",
+          "height": "",
+          "angle": "-90",
+          "swing": "up",
+          "kind": "",
+          "html": ""
+        },
+        {
+          "type": "wall",
+          "left": "392.769532px",
+          "top": "72.667968px",
+          "width": "179.281445px",
+          "height": "",
+          "angle": "0",
+          "swing": "up",
+          "kind": "",
+          "html": ""
+        },
+        {
+          "type": "wall",
+          "left": "570.796875px",
+          "top": "69.394531px",
+          "width": "223.907988px",
+          "height": "",
+          "angle": "90",
+          "swing": "up",
+          "kind": "",
+          "html": ""
+        },
+        {
+          "type": "wall",
+          "left": "393.339844px",
+          "top": "291.26953px",
+          "width": "176.665824px",
+          "height": "",
+          "angle": "0",
+          "swing": "up",
+          "kind": "",
+          "html": ""
+        },
+        {
+          "type": "wall",
+          "left": "572.492188px",
+          "top": "254.664062px",
+          "width": "74.453627px",
+          "height": "",
+          "angle": "0",
+          "swing": "up",
+          "kind": "",
+          "html": ""
+        },
+        {
+          "type": "wall",
+          "left": "0px",
+          "top": "114.992188px",
+          "width": "149.411087px",
+          "height": "",
+          "angle": "0",
+          "swing": "up",
+          "kind": "",
+          "html": ""
+        },
+        {
+          "type": "wall",
+          "left": "149.417969px",
+          "top": "116.71875px",
+          "width": "125.147841px",
+          "height": "",
+          "angle": "-90",
+          "swing": "up",
+          "kind": "",
+          "html": ""
+        },
+        {
+          "type": "door",
+          "left": "571.312498px",
+          "top": "68.51172px",
+          "width": "46.230275px",
+          "height": "",
+          "angle": "89",
+          "swing": "down",
+          "kind": "",
+          "html": ""
+        },
+        {
+          "type": "door",
+          "left": "646.437501px",
+          "top": "210.242188px",
+          "width": "58.313537px",
+          "height": "",
+          "angle": "-90",
+          "swing": "down",
+          "kind": "",
+          "html": ""
+        },
+        {
+          "type": "door",
+          "left": "148.636719px",
+          "top": "50.054688px",
+          "width": "56.623769px",
+          "height": "",
+          "angle": "-89",
+          "swing": "up",
+          "kind": "",
+          "html": ""
+        },
+        {
+          "type": "text",
+          "left": "14.136719px",
+          "top": "42.601562px",
+          "width": "96.792969px",
+          "height": "48.636719px",
+          "angle": "0",
+          "swing": "up",
+          "kind": "",
+          "html": "机房<div>3m x 2.5m</div>"
+        },
+        {
+          "type": "text",
+          "left": "393.562502px",
+          "top": "73.828126px",
+          "width": "116.285157px",
+          "height": "44.296875px",
+          "angle": "0",
+          "swing": "up",
+          "kind": "",
+          "html": "会议室<div>4.8m x 3.6m</div>"
+        },
+        {
+          "type": "measure",
+          "left": "520.269532px",
+          "top": "74.402344px",
+          "width": "77.431675px",
+          "height": "",
+          "angle": "-90",
+          "swing": "up",
+          "kind": "",
+          "html": ""
+        },
+        {
+          "type": "measure",
+          "left": "569.648438px",
+          "top": "72.335938px",
+          "width": "76.74408px",
+          "height": "",
+          "angle": "0",
+          "swing": "up",
+          "kind": "",
+          "html": ""
+        },
+        {
+          "type": "measure",
+          "left": "417.992188px",
+          "top": "339.324219px",
+          "width": "41.407153px",
+          "height": "",
+          "angle": "-90",
+          "swing": "up",
+          "kind": "",
+          "html": ""
+        },
+        {
+          "type": "measure",
+          "left": "110.199219px",
+          "top": "340px",
+          "width": "218.795875px",
+          "height": "",
+          "angle": "-90",
+          "swing": "up",
+          "kind": "",
+          "html": ""
+        },
+        {
+          "type": "measure",
+          "left": "0px",
+          "top": "249.414063px",
+          "width": "389.528919px",
+          "height": "",
+          "angle": "0",
+          "swing": "up",
+          "kind": "",
+          "html": ""
+        },
+        {
+          "type": "measure",
+          "left": "149.894531px",
+          "top": "88.101563px",
+          "width": "240.605583px",
+          "height": "",
+          "angle": "0",
+          "swing": "up",
+          "kind": "",
+          "html": ""
+        },
+        {
+          "type": "ac",
+          "left": "15.445313px",
+          "top": "20.050782px",
+          "width": "45px",
+          "height": "45px",
+          "angle": "0",
+          "swing": "up",
+          "kind": "",
+          "html": "空调<br>0.9×0.9m"
+        },
+        {
+          "type": "ac",
+          "left": "291.355469px",
+          "top": "157.339844px",
+          "width": "45px",
+          "height": "45px",
+          "angle": "0",
+          "swing": "up",
+          "kind": "",
+          "html": "空调<br>0.9×0.9m"
+        },
+        {
+          "type": "ac",
+          "left": "465.617188px",
+          "top": "155.859375px",
+          "width": "45px",
+          "height": "45px",
+          "angle": "0",
+          "swing": "up",
+          "kind": "",
+          "html": "空调<br>0.9×0.9m"
+        },
+        {
+          "type": "furniture",
+          "left": "391.230468px",
+          "top": "152.128906px",
+          "width": "190px",
+          "height": "86px",
+          "angle": "270",
+          "swing": "up",
+          "kind": "meeting-table",
+          "html": "<span class=\"chair chair-top chair-1\"></span><span class=\"chair chair-top chair-2\"></span><span class=\"chair chair-top chair-3\"></span><span class=\"chair chair-top chair-4\"></span><span class=\"meeting-table-core\">8人桌<br>3.2×1.2m</span><span class=\"chair chair-bottom chair-1\"></span><span class=\"chair chair-bottom chair-2\"></span><span class=\"chair chair-bottom chair-3\"></span><span class=\"chair chair-bottom chair-4\"></span>"
+        },
+        {
+          "type": "furniture",
+          "left": "463.765625px",
+          "top": "288.046875px",
+          "width": "33.828125px",
+          "height": "16px",
+          "angle": "0",
+          "swing": "up",
+          "kind": "screen",
+          "html": "大屏幕"
+        },
+        {
+          "type": "logo-wall",
+          "left": "574.652344px",
+          "top": "128.027344px",
+          "width": "123.021387px",
+          "height": "",
+          "angle": "90",
+          "swing": "up",
+          "kind": "",
+          "html": ""
+        },
+        {
+          "type": "measure",
+          "left": "607.874999px",
+          "top": "339.304687px",
+          "width": "74.541213px",
+          "height": "",
+          "angle": "-89",
+          "swing": "up",
+          "kind": "",
+          "html": ""
+        }
+      ]
+    },
+    {
+      "id": "1779717634248",
+      "name": "初始000",
+      "savedAt": "2026-05-25T14:00:34.248Z",
+      "items": [
+        {
+          "type": "ac",
+          "left": "85.339844px",
+          "top": "153.269531px",
+          "width": "45px",
+          "height": "45px",
+          "angle": "0",
+          "swing": "up",
+          "kind": "",
+          "html": "空调<br>0.9×0.9m"
+        },
+        {
+          "type": "ac",
+          "left": "304.894532px",
+          "top": "150.089844px",
+          "width": "45px",
+          "height": "45px",
+          "angle": "0",
+          "swing": "up",
+          "kind": "",
+          "html": "空调<br>0.9×0.9m"
+        },
+        {
+          "type": "ac",
+          "left": "521.113281px",
+          "top": "157.105469px",
+          "width": "45px",
+          "height": "45px",
+          "angle": "0",
+          "swing": "up",
+          "kind": "",
+          "html": "空调<br>0.9×0.9m"
+        },
+        {
+          "type": "door",
+          "left": "647.152344px",
+          "top": "211.984375px",
+          "width": "62.204163px",
+          "height": "",
+          "angle": "-90",
+          "swing": "down",
           "kind": "",
           "html": ""
         }
